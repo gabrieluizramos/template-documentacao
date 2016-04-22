@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Template Documentação - KBRTec</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="body">
+	<div class="wrapper">
+		<div class="block">
+			<h1 class="h1">Titulo projeto</h1>
+		</div>
+		<div class="block">
+			<nav class="nav clearfix">
+				<ul class="ul no-bullet clearfix">
+					<li class="li" data-aba>Sobre</li>
+					<li class="li" data-aba>Especificações</li>
+					<li class="li" data-aba>Dependências</li>
+					<li class="li" data-aba>Hospedagem</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="block-panel">
+			<div data-painel>
+				<div class="block">
+					<h2 class="h1">Sobre o Projeto</h2>
+					<p class="text">
+						Descrição do projeto
+					</p>
+				</div>
+			</div>
+			<div data-painel>
+				<div class="block">
+					<h2 class="h1">Especificações</h2>
+				</div>
+				<div class="block">
+					<nav class="nav nav-interna clearfix">
+						<ul class="ul no-bullet clearfix">
+							<li class="li" data-aba-conteudo>Regras</li>
+							<li class="li" data-aba-conteudo>Wireframe</li>
+							<li class="li" data-aba-conteudo>Itens complementares</li>
+						</ul>
+					</nav>
+				</div>
+				<div class="block">
+					<div data-painel-conteudo>
+						<p class="text">
+							Descrição das regras
+						</p>
+					</div>
+					<div data-painel-conteudo>
+						<p class="text">
+							wireframes
+						</p>
+					</div>
+					<div data-painel-conteudo>
+						<p class="text">
+							Descrições complementares
+						</p>
+					</div>
+				</div>
+			</div>
+			<div data-painel>
+				<div class="block">
+					<h2 class="h1">Dependências</h2>
+				</div>
+				<div class="block">
+					<nav class="nav nav-interna clearfix">
+						<ul class="ul no-bullet clearfix">
+							<li class="li" data-aba-conteudo>Design Gráfico</li>
+							<li class="li" data-aba-conteudo>Front-End</li>
+							<li class="li" data-aba-conteudo>Back-End</li>
+							<li class="li" data-aba-conteudo>Banco</li>
+						</ul>
+					</nav>
+				</div>
+				<div class="block">
+					<div data-painel-conteudo>
+						<p class="text">
+							Descrição do design gráfico
+						</p>
+					</div>
+					<div data-painel-conteudo>
+						<p class="text">
+							Descrição do projeto-front
+						</p>
+					</div>
+					<div data-painel-conteudo>
+						<p class="text">
+							Descrição do projeto-back
+						</p>
+					</div>
+					<div data-painel-conteudo>
+						<p class="text">
+							Descrição do banco
+						</p>
+					</div>
+				</div>
+			</div>
+			<div data-painel>
+				<div class="block">
+					<h2 class="h1">Hospedagem</h2>
+					<p class="text">
+						Descrição da hospedagem
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery-1.12.3.min.js"></script>
+<script>
+	$.extend({
+		tabs: function( event, trigger, target ){
+			$( trigger ).on( event , function(){
+				$( target ).css( 'display', 'none' ); 
+				$( target ).attr( 'data-active' , false ); 
+				$( trigger ).attr( 'data-active', false );
+				$( target+':nth-child(' + ( $( this ).index() + 1 ) + ')' ).toggle().attr( 'data-active' , true );
+				$( this ).attr( 'data-active' , true );
+			});
+			$( trigger+':first' ).trigger( event );
+		}
+	});
+	$.tabs( 'click' , '[data-aba]' , '[data-painel]' );	
+	$.tabs( 'click' , '[data-aba-conteudo]' , '[data-painel-conteudo]' );
+</script>
+</html>
